@@ -1,8 +1,14 @@
-from flask import Flask, render_template
-app = Flask(__name__, template_folder='template')
+from flask import Flask, render_template, request, flash
 
-@app.route('/<user>')
-def hi(user):
-    return render_template('index.html', name=user)
+app = Flask(__name__)
+app.secret_key = "manbearpig_MUDMAN888"
 
-app.run(debug=True)
+@app.route("/hello")
+def index():
+	flash("what's your name?")
+	return render_template("index.html")
+
+@app.route("/greet", methods=['POST', 'GET'])
+def greeter():
+	flash("Hi " + str(request.form['name_input']) + ", great to see you!")
+	return render_template("index.html")
