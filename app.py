@@ -1,8 +1,7 @@
-from flask import Flask, render_template
-app = Flask(__name__, template_folder='template')
+from flask import Flask')
 
-@app.route('/<user>')
-def hi(user):
-    return render_template('index.html', name=user)
+@app.route(/)
+def hi():
+    return ('i')
 
 app.run(debug=True)
